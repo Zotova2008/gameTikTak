@@ -1,0 +1,115 @@
+body {
+	font-family: "Share Tech Mono", monospace;
+}
+
+.game-card {
+	height: 100vh;
+	font-family: "Open Sans", monospace;
+}
+
+h1 {
+	width: 500px;
+	text-align: center;
+	margin-left: 30px;
+}
+
+.timer-output {
+	width: 200px;
+	background: #222;
+	color: darkred;
+	padding: 16px 8px;
+	font-size: 64px;
+	text-align: center;
+	line-height: 1;
+	user-select: none;
+}
+
+.timer-output-wrapper {
+	width: calc(100% - 24px);
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	margin: 12px;
+}
+
+.statusField {
+	margin-top: 20px;
+}
+
+.btn {
+	background: #54ba4e;
+	border: 1px solid #54ba4e;
+	color: #fff;
+	font-weight: 600;
+	margin: auto;
+}
+
+.btn:hover {
+	background: #49ac43;
+	border: 1px solid #49ac43;
+	color: #fff;
+}
+
+.myaccordion {
+	width: 100%;
+	color: #004987;
+}
+
+.myaccordion .card {
+	border: none;
+}
+
+.myaccordion .card-header {
+	border-bottom-color: #edeff0;
+	background: transparent;
+}
+
+.myaccordion .btn {
+	width: 100%;
+	font-weight: bold;
+	color: #004987;
+	padding: 5px;
+}
+
+.myaccordion .btn-link:hover,
+.myaccordion .btn-link:focus {
+	text-decoration: none;
+	box-shadow: none;
+}
+
+.btn-group {
+	display: flex;
+	align-items: center;
+}
+
+.btn-answer {
+	background-color: #4caf50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.btn-answer:hover {
+	background-color: #004987;
+	color: white;
+}
+
+.btn-group .fa {
+	font-size: 20px;
+}
+
+.card-footer .btn {
+	background-color: #004987;
+	color: white;
+}
+
+.card-footer {
+	background-color: white;
+}
