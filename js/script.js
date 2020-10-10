@@ -19,7 +19,13 @@ window.onload = function () {
 		document.getElementById('cardTimer'),
 		document.querySelector('.game-quest'),
 		document.querySelector('#game8')
-
 	)
+	try {
+		tasks;
+	  } catch(anyException) {
+		console.warn(anyException.message);
+		alert("Есть ошибки в списке вопросов!");
+	  };
+
 	tikTakBoom.startGame();
 }

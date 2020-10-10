@@ -1,4 +1,5 @@
 tikTakBoom = {
+
 	init(
 		tasks,
 		buttonStart,
@@ -19,6 +20,7 @@ tikTakBoom = {
 		cardTimer,
 		gameQuest
 	) {
+			
 
 		this.preTime = 3;
 		this.boomTimer = 30
@@ -47,7 +49,19 @@ tikTakBoom = {
 		this.maxWrongAnswers = 3;
 		this.playersWrongAnswer = 0;
 		this.playerNumber = 1;
+
+		try {
+			this.OneRight();
+			this.questionOk();
+			this.AnsANDquesOK();
+			this.kolQues();
+		  } catch(anyException) {
+			console.warn(anyException.message);
+			alert("Есть ошибки!");
+		  }
+
 	},
+
 
 	showDom() {
 		this.buttonStart.classList.add('game-card__close');
@@ -59,6 +73,7 @@ tikTakBoom = {
 	},
 
 	startGame() {
+		
 		this.buttonStart.addEventListener('click', (event) => {
 			this.countOfPlayers = parseInt(this.countOfPlayersField.value) || 2;
 			this.boomTimer = (parseInt(this.countOfTimeField.value) + 1) || 31;
@@ -316,14 +331,41 @@ tikTakBoom = {
 		min = (min >= 10) ? min : '0' + min;
 		this.timerField.innerText = `${min}:${sec}`;
 
-		if (this.boomTimer > 0) {
-			this.timerTimeout = setTimeout(() => {
-					this.timer();
-				},
-				1000,
-			);
-		} else {
-			this.finish('lose');
+	OneRight() {
+//console.log(this.tasks.length);
+		for (let i = 0; i < this.tasks.length; i++) {
+			var OneRightOk = 0;
+			for(let j = 1; j <= 10; j++){
+				if(eval(`this.tasks[i].answer${j}`)){
+					if(eval(`this.tasks[i].answer${j}.result`) == true) {OneRightOk++};
+				}
+			}
+				//console.log(OneRightOk + " vopr: " + parseInt(i+1));
+				if(OneRightOk > 1) throw new Error(`В вопросе ${i+1} больше одного верного ответа!`);
 		}
 	},
+
+	questionOk() {
+		for (let i = 0; i < this.tasks.length; i++) {
+			if('question' in this.tasks[i]){}
+			else throw new Error(`В вопросе ${i+1} отсутствует вопрос!`);
+		}
+	},
+
+	AnsANDquesOK() {
+		for (let i = 0; i < this.tasks.length; i++) {
+			let ques = this.tasks[i].question;
+			if(!ques.includes(" ")) {alert(`В вопросе ${i+1} отсутствует вопрос!`)}
+			for(let j = 1; j <= 10; j++){
+				if(eval(`this.tasks[i].answer${j}`)){
+					if(eval(`this.tasks[i].answer${j}.value`) === "") throw new Error(`В вопросе ${i+1} отсутствует ответ!`);
+				}
+			}
+		}
+	},
+
+	kolQues() {
+		if(this.tasks.length < 30) throw new Error(`В игре мало вопросов!`);
+	}
+
 }
