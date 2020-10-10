@@ -1,4 +1,5 @@
 tikTakBoom = {
+
 	init(
 		tasks,
 		buttonStart,
@@ -16,6 +17,7 @@ tikTakBoom = {
 		textFieldAnswer5,
 		textFieldAnswer6
 	) {
+			
 
 		this.preTime = 4;
 		this.stop = 1;
@@ -40,7 +42,19 @@ tikTakBoom = {
 		this.maxWrongAnswers = 3;
 		this.playersWrongAnswer = 0;
 		this.playerNumber = 1;
+
+		try {
+			this.OneRight();
+			this.questionOk();
+			this.AnsANDquesOK();
+			this.kolQues();
+		  } catch(anyException) {
+			console.warn(anyException.message);
+			alert("Есть ошибки!");
+		  }
+
 	},
+
 
 	showDom() {
 		this.buttonStart.style.display = "none";
@@ -50,6 +64,7 @@ tikTakBoom = {
 	},
 
 	startGame() {
+		
 		this.buttonStart.addEventListener('click', (event) => {
 			tikTakBoom.countOfPlayers = parseInt(tikTakBoom.countOfPlayersField.value) || 2;
 			tikTakBoom.boomTimer = (parseInt(tikTakBoom.countOfTimeField.value) + 1) || 31;
@@ -336,8 +351,46 @@ tikTakBoom = {
 				this.textFieldAnswer.style.display = "block";
 				this.turnOn();
 				this.timer();
+
 			}
 		}
 	},
+
+	OneRight() {
+//console.log(this.tasks.length);
+		for (let i = 0; i < this.tasks.length; i++) {
+			var OneRightOk = 0;
+			for(let j = 1; j <= 10; j++){
+				if(eval(`this.tasks[i].answer${j}`)){
+					if(eval(`this.tasks[i].answer${j}.result`) == true) {OneRightOk++};
+				}
+			}
+				//console.log(OneRightOk + " vopr: " + parseInt(i+1));
+				if(OneRightOk > 1) throw new Error(`В вопросе ${i+1} больше одного верного ответа!`);
+		}
+	},
+
+	questionOk() {
+		for (let i = 0; i < this.tasks.length; i++) {
+			if('question' in this.tasks[i]){}
+			else throw new Error(`В вопросе ${i+1} отсутствует вопрос!`);
+		}
+	},
+
+	AnsANDquesOK() {
+		for (let i = 0; i < this.tasks.length; i++) {
+			let ques = this.tasks[i].question;
+			if(!ques.includes(" ")) {alert(`В вопросе ${i+1} отсутствует вопрос!`)}
+			for(let j = 1; j <= 10; j++){
+				if(eval(`this.tasks[i].answer${j}`)){
+					if(eval(`this.tasks[i].answer${j}.value`) === "") throw new Error(`В вопросе ${i+1} отсутствует ответ!`);
+				}
+			}
+		}
+	},
+
+	kolQues() {
+		if(this.tasks.length < 30) throw new Error(`В игре мало вопросов!`);
+	}
 
 }
