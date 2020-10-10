@@ -17,7 +17,9 @@ window.onload = function () {
 		document.getElementById('answer6'),
 		document.getElementById('cardPlayers'),
 		document.getElementById('cardTimer'),
-		document.querySelector('.game-quest')
+		document.querySelector('.game-quest'),
+		document.querySelector('#game8')
+
 	)
 	tikTakBoom.startGame();
 }

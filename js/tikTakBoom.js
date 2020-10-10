@@ -72,6 +72,7 @@ tikTakBoom = {
 			this.gameStatusField.innerText = `Приготовьтесь...`;
 			this.run();
 			this.stopGame();
+			console.log(this);
 		})
 	},
 
@@ -96,11 +97,14 @@ tikTakBoom = {
 			this.players = [];
 			this.result = 'lose';
 			this.stop = 0;
-			this.boomTimer = 0;
-			this.preTime = 0;
+			// this.boomTimer = 0;
+			// this.preTime = 0;
 			this.state = 0;
 			this.playerNumber = 1;
 			this.finish();
+			clearInterval(this.timeClear);
+			clearTimeout(this.timerTimeout);
+			this.gameStatusField.innerText = `Все проиграли!`;
 		})
 	},
 
@@ -205,9 +209,20 @@ tikTakBoom = {
 		this.textFieldQuestion.innerText = task.question;
 		this.textFieldAnswer1.innerText = task.answer1.value;
 		this.textFieldAnswer2.innerText = task.answer2.value;
-		this.textFieldAnswer1.classList.remove('game-card__close');
-		this.textFieldAnswer2.classList.remove('game-card__close');
+		this.gameQuest.classList.remove('game-card__close');
 
+		if (task.answer1 === undefined) {
+			this.textFieldAnswer1.classList.add('game-card__close');
+		} else {
+			this.textFieldAnswer1.innerText = task.answer1.value;
+			this.textFieldAnswer1.classList.remove('game-card__close');
+		};
+		if (task.answer2 === undefined) {
+			this.textFieldAnswer2.classList.add('game-card__close');
+		} else {
+			this.textFieldAnswer2.innerText = task.answer2.value;
+			this.textFieldAnswer2.classList.remove('game-card__close');
+		};
 		if (task.answer3 === undefined) {
 			this.textFieldAnswer3.classList.add('game-card__close');
 		} else {
@@ -262,8 +277,7 @@ tikTakBoom = {
 
 	finish(result = 'lose') {
 		this.buttonStart.classList.remove('game-card__close');
-		this.textFieldAnswer.classList.add('game-card__close');
-		this.textFieldQuestion.classList.add('game-card__close');
+		this.gameQuest.classList.add('game-card__close');
 		this.buttonStart.innerText = `Начать заново!`;
 		this.buttonFinish.classList.add('game-card__close');
 
@@ -278,11 +292,11 @@ tikTakBoom = {
 	beforeTimer() {
 		this.gameQuest.classList.add('game-card__close');
 		var i = this.preTime;
-		var timeClear = setInterval(() => {
+		this.timeClear = setInterval(() => {
 			this.timerField.innerText = i;
 			i--;
 			if (i < 0) {
-				clearInterval(timeClear);
+				clearInterval(this.timeClear);
 				this.timer();
 				const taskNumber = randomIntNumber(this.tasks.length - 1);
 				this.printQuestion(this.tasks[taskNumber]);
