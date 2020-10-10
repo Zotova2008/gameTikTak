@@ -2,153 +2,149 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>ТикТакБум</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
-	<link href="http://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css" type="text/css" />
+  <meta charset="UTF-8">
+  <title>ТикТакБум</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+  <link href="http://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-	<div class="container">
-		<div class="row game-card align-items-center">
-			<div class="col col-md-8 offset-md-2">
-				<div id="accordion" class="myaccordion">
-					<div class="mb-3 offset-md-1">
-						<h1>Тик-так-бум</h1>
-					</div>
-					<div class="card">
-						<div class="card-header" id="headingOne">
-							<button class="d-flex align-items-center justify-content-between btn btn-link"
-								data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-								aria-controls="collapseOne">
-								Количество игроков:
-								<span class="fa-stack fa-sm">
-									<i class="fa fa-circle fa-stack-2x"></i>
-									<i class="fa fa-minus fa-stack-1x fa-inverse"></i>
-								</span>
-							</button>
-						</div>
-						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-							<div class="container">
-								<div class="row">
-									<div class="col-6">
-										<div class="input-group mb-3">
-											<input type="number" id="countOfPlayersField" class="form-control"
-												placeholder="Введите количество игроков" aria-describedby="button-addon1">
-											</input>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-header" id="headingTwo">
-							<h2 class="mb-0">
-								<button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
-									data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-									aria-controls="collapseTwo">
-									Количество времени на игру:
-									<span class="fa-stack fa-sm">
-										<i class="fa fa-circle fa-stack-2x"></i>
-										<i class="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</span>
-								</button>
-							</h2>
-						</div>
-						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-							<div class="container">
-								<div class="row">
-									<div class="col-6">
-										<div class="input-group mb-3">
-											<input type="number" id="countOfTimeField" class="form-control"
-												placeholder="Введите время в сек." aria-describedby="button-addon2">
-											</input>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<output id="outputText"></output>
-					</div>
-					<div class="row">
-						<div class="col col-md-3 offset-md-1">
-							<button class="btn btn-info" type="button" id="buttonStart" style="display:block">Старт!</button>
-							<button class="btn btn-info" type="button" id="buttonFinish" style="display:none">Закончить
-								игру!</button>
-						</div>
-						<div class=" col col-md-3 offset-md-4">
-							<div class="rules">
-								<a class="btn rules float-right" href="/rules.html" target="_blank"> Правила игры</a>
-							</div>
-						</div>
-					</div>
-					<div class="row statusField">
-						<span class="alert alert-primary" id="gameStatusField" style="display:none">Приготовьтесь...</span>
-					</div>
-					<div class="row">
-						<div class="col">
-							<div class="timer-output-wrapper">
-								<div class="timer-output" id="timerField" style="display:none">
-									00:00
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<h3 id="questionField"></h3>
-					</div>
-					<div id="answerField">
-						<div class="row">
-							<div id="answer1" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-						<div class="row">
-							<div id="answer2" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-						<div class="row">
-							<div id="answer3" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-						<div class="row">
-							<div id="answer4" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-						<div class="row">
-							<div id="answer5" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-						<div class="row">
-							<div id="answer6" class="btn btn-answer form-control text-left answer" style="display:none"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
+  <div class="container">
+    <div class="row game-card align-items-center">
+      <div class="col col-md-8 offset-md-2">
+        <div id="accordion" class="myaccordion">
+          <div class="mb-3 offset-md-1">
+            <h1>Тик-так-бум</h1>
+          </div>
+          <div class="card" id="cardPlayers">
+            <div class="card-header" id="headingOne">
+              <button class="d-flex align-items-center justify-content-between btn btn-link"
+                data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                aria-controls="collapseOne">
+                Количество игроков:
+                <span class="fa-stack fa-sm">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
+                </span>
+              </button>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="input-group mb-3">
+                      <input type="number" id="countOfPlayersField" class="form-control" placeholder="Введите количество игроков" aria-describedby="button-addon1" value="4" min="1" max="4">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="cardTimer">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                  aria-controls="collapseTwo">
+                  Количество времени на игру:
+                  <span class="fa-stack fa-sm">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="input-group mb-3">
+                      <input type="number" id="countOfTimeField" class="form-control" placeholder="Введите время в сек." aria-describedby="button-addon2" value="60">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <output id="outputText"></output>
+          </div>
+          <div class="row">
+            <div class="col col-md-3 offset-md-1">
+              <button class="btn btn-info" type="button" id="buttonStart">Старт!</button>
+              <button class="btn btn-info game-card__close" type="button" id="buttonFinish">Закончить игру!</button>
+            </div>
+            <div class=" col col-md-3 offset-md-4">
+              <div class="rules">
+                <a class="btn rules float-right" href="/rules.html" target="_blank"> Правила игры</a>
+              </div>
+            </div>
+          </div>
+          <div class="row status-field">
+            <span class="alert alert-primary game-card__close" id="gameStatusField">Приготовьтесь...</span>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="timer-output-wrapper">
+                <div class="timer-output game-card__close" id="timerField">
+                  00:00
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="game-quest game-card__close">
+            <div class="row">
+              <h3 id="questionField"></h3>
+            </div>
+            <div id="answerField">
+              <div class="row">
+                <div id="answer1" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+              <div class="row">
+                <div id="answer2" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+              <div class="row">
+                <div id="answer3" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+              <div class="row">
+                <div id="answer4" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+              <div class="row">
+                <div id="answer5" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+              <div class="row">
+                <div id="answer6" class="btn btn-answer form-control text-left answer game-card__close"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<script src="js/utils.js"></script>
-	<script src="js/tikTakBoom.js"></script>
-	<script src="js/tikTakBoomTasks.js"></script>
-	<script src="js/script.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-		crossorigin="anonymous"></script>
-	<script>
-		$("#accordion").on("hide.bs.collapse show.bs.collapse", e => {
-			e.stopPropagation();
-			$(e.target)
-				.prev()
-				.find("i:last-child")
-				.toggleClass("fa-minus fa-plus");
-		});
-	</script>
+  <script src="js/utils.js"></script>
+  <script src="js/tikTakBoom.js"></script>
+  <script src="js/tikTakBoomTasks.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script>
+    $("#accordion").on("hide.bs.collapse show.bs.collapse", e => {
+      e.stopPropagation();
+      $(e.target)
+        .prev()
+        .find("i:last-child")
+        .toggleClass("fa-minus fa-plus");
+    });
+  </script>
 </body>
 
 </html>
