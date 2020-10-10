@@ -15,7 +15,10 @@ window.onload = function () {
 		document.getElementById('answer4'),
 		document.getElementById('answer5'),
 		document.getElementById('answer6'),
-
+		document.getElementById('cardPlayers'),
+		document.getElementById('cardTimer'),
+		document.querySelector('.game-quest'),
+		document.querySelector('#game8')
 	)
 	try {
 		tasks;
