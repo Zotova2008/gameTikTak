@@ -30,4 +30,5 @@ window.onload = function () {
 	};
 
 	tikTakBoom.startGame();
+
 }

@@ -157,3 +157,16 @@ h1 {
 .game__checkbox label {
   min-width: 177px;
 }
+
+.one {
+  display: none;
+}
+
+#gameMillion:checked ~ .one {
+  display: block;
+}
+
+.red {
+  font-weight: bold;
+  color: red;
+}
