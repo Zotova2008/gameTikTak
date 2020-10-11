@@ -55,7 +55,7 @@ tikTakBoom = {
 		this.gameSetting = gameSetting;
 
 		this.needRightAnswers = 19;
-		this.maxWrongAnswers = 1;
+		this.maxWrongAnswers = 3;
 		this.playersWrongAnswer = 0;
 		this.playerNumber = 1;
 
