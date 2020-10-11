@@ -144,3 +144,16 @@ h1 {
 .game-card__open {
   display: block;
 }
+
+.game__checkbox {
+  display: flex;
+  justify-content: space-around;
+}
+
+.game__checkbox input {
+  margin-right: 10px;
+}
+
+.game__checkbox label {
+  min-width: 177px;
+}

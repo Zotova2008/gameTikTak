@@ -18,14 +18,16 @@ window.onload = function () {
 		document.getElementById('cardPlayers'),
 		document.getElementById('cardTimer'),
 		document.querySelector('.game-quest'),
-		document.querySelector('#game8')
+		document.querySelector('#game8'),
+		document.querySelector('#gameMillion'),
+		document.querySelector('.game__setting')
 	)
 	try {
 		tasks;
-	  } catch(anyException) {
+	} catch (anyException) {
 		console.warn(anyException.message);
 		alert("Есть ошибки в списке вопросов!");
-	  };
+	};
 
 	tikTakBoom.startGame();
 }

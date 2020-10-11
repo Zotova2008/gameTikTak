@@ -18,7 +18,10 @@ tikTakBoom = {
 		textFieldAnswer6,
 		cardPlayers,
 		cardTimer,
-		gameQuest
+		gameQuest,
+		game8,
+		gameMillion,
+		gameSetting
 	) {
 
 
@@ -44,6 +47,9 @@ tikTakBoom = {
 		this.gameQuest = gameQuest;
 		this.cardPlayers = cardPlayers;
 		this.cardTimer = cardTimer;
+		this.game8 = game8;
+		this.gameMillion = gameMillion;
+		this.gameSetting = gameSetting;
 
 		this.needRightAnswers = 19;
 		this.maxWrongAnswers = 3;
@@ -65,8 +71,9 @@ tikTakBoom = {
 
 	showDom() {
 		this.buttonStart.classList.add('game-card__close');
-		this.cardPlayers.classList.add('game-card__close');
-		this.cardTimer.classList.add('game-card__close');
+		this.gameSetting.classList.add('game-card__close');
+		// this.cardPlayers.classList.add('game-card__close');
+		// this.cardTimer.classList.add('game-card__close');
 		this.buttonFinish.classList.remove('game-card__close');
 		this.timerField.classList.remove('game-card__close');
 		this.gameStatusField.classList.remove('game-card__close');
@@ -86,8 +93,10 @@ tikTakBoom = {
 			this.gameStatusField.innerText = ``;
 			this.gameStatusField.innerText = `Приготовьтесь...`;
 			this.run();
+		});
+		this.buttonFinish.addEventListener('click', (event) => {
 			this.stopGame();
-		})
+		});
 	},
 
 	createPlayers() {
@@ -105,21 +114,18 @@ tikTakBoom = {
 	},
 
 	stopGame() {
-		this.buttonFinish.addEventListener('click', (event) => {
-			// debugger;
-			this.players = null;
-			this.players = [];
-			this.result = 'lose';
-			this.stop = 0;
-			// this.boomTimer = 0;
-			// this.preTime = 0;
-			this.state = 0;
-			this.playerNumber = 1;
-			this.finish();
-			clearInterval(this.timeClear);
-			clearTimeout(this.timerTimeout);
-			this.gameStatusField.innerText = `Все проиграли!`;
-		})
+		// debugger;
+		this.players = null;
+		this.players = [];
+		this.result = 'lose';
+		this.stop = 0;
+		this.state = 0;
+		this.playerNumber = 1;
+		this.finish();
+		clearInterval(this.timeClear);
+		clearTimeout(this.timerTimeout);
+		this.gameStatusField.innerText = `Все проиграли!`;
+		this.gameSetting.classList.remove('game-card__close');
 	},
 
 	run() {

@@ -19,56 +19,78 @@
           <div class="mb-3 offset-md-1">
             <h1>Тик-так-бум</h1>
           </div>
-          <div class="card" id="cardPlayers">
-            <div class="card-header" id="headingOne">
-              <button class="d-flex align-items-center justify-content-between btn btn-link"
-                data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                aria-controls="collapseOne">
-                Количество игроков:
-                <span class="fa-stack fa-sm">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
-                </span>
-              </button>
-            </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="container">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="input-group mb-3">
-                      <input type="number" id="countOfPlayersField" class="form-control" placeholder="Введите количество игроков" aria-describedby="button-addon1" value="4" min="1" max="4">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card" id="cardTimer">
-            <div class="card-header" id="headingTwo">
-              <h2 class="mb-0">
-                <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
-                  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                  aria-controls="collapseTwo">
-                  Количество времени на игру:
+          <div class="game__setting">
+            <div class="card" id="cardPlayers">
+              <div class="card-header" id="headingOne">
+                <button class="d-flex align-items-center justify-content-between btn btn-link"
+                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                  aria-controls="collapseOne">
+                  Количество игроков:
                   <span class="fa-stack fa-sm">
                     <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
                   </span>
                 </button>
-              </h2>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="container">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="input-group mb-3">
-                      <input type="number" id="countOfTimeField" class="form-control" placeholder="Введите время в сек." aria-describedby="button-addon2" value="60">
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group mb-3">
+                        <input type="number" id="countOfPlayersField" class="form-control" placeholder="Введите количество игроков" aria-describedby="button-addon1" value="4" min="1" max="4">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <output id="outputText"></output>
+            <div class="card" id="cardOtherGame">
+              <div class="card-header" id="headingTwo">
+                <button class="d-flex align-items-center justify-content-between btn btn-link"
+                  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                  aria-controls="collapseTwo">
+                  Дополнительные игры:
+                  <span class="fa-stack fa-sm">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
+                  </span>
+                </button>
+              </div>
+              <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="container">
+                  <div class="row game__checkbox">
+                    <label><input type="checkbox" value="2" id="gameMillion" checked>Вопрос на миллион</label>
+                    <label><input type="checkbox" value="3" id="game8" checked>Восьмерка</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" id="cardTimer">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    Количество времени на игру:
+                    <span class="fa-stack fa-sm">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group mb-3">
+                        <input type="number" id="countOfTimeField" class="form-control" placeholder="Введите время в сек." aria-describedby="button-addon2" value="60">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col col-md-3 offset-md-1">
@@ -79,11 +101,6 @@
               <div class="rules">
                 <a class="btn rules float-right" href="/rules.html" target="_blank"> Правила игры</a>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-md-3 offset-md-1">
-              <button class="btn btn-info game-card__close" type="button" id="game8">Игра "Восьмерка"</button>
             </div>
           </div>
           <div class="row status-field">
