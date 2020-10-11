@@ -252,7 +252,6 @@ tikTakBoom = {
 
 	printQuestion(task) {
 		this.gameMultiIndex = randomIntNumber(this.gameMultiArr.length - 1, 0);
-		console.log('gameMultiIndex ' + this.gameMultiIndex + ' gameMultiArr[gameMultiIndex] ' + this.gameMultiArr[this.gameMultiIndex]);
 
 		if (this.gameMultiArr[this.gameMultiIndex] === 2) {
 			this.textFieldQuestion.innerHTML = `<span class="red">Вопрос на миллион: </span>`;
