@@ -17,12 +17,6 @@ window.onload = function () {
 		document.getElementById('answer6'),
 
 	)
-	try {
-		tasks;
-	  } catch(anyException) {
-		console.warn(anyException.message);
-		alert("Есть ошибки в списке вопросов!");
-	  };
 
 	tikTakBoom.startGame();
 }

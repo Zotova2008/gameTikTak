@@ -49,12 +49,13 @@ tikTakBoom = {
 			this.AnsANDquesOK();
 			this.kolQues();
 		  } catch(anyException) {
+			this.showDom();
+			alert("Игру невозможно продолжить, игра содержит ошибки!");
 			console.warn(anyException.message);
-			alert("Есть ошибки!");
+			
 		  }
 
 	},
-
 
 	showDom() {
 		this.buttonStart.style.display = "none";
