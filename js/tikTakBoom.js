@@ -18,10 +18,7 @@ tikTakBoom = {
 		textFieldAnswer6,
 		cardPlayers,
 		cardTimer,
-		gameQuest,
-		game8,
-		gameMillion,
-		gameSetting
+		gameQuest
 	) {
 
 
@@ -29,9 +26,12 @@ tikTakBoom = {
 		this.boomTimer = 30
 		this.stop = 1;
 		this.tasks = JSON.parse(tasks);
+		this.answers = [];
+      
 		// 1 обычная игра, 2 - вопрос на миллион, 3 - восьмерка
 		this.gameMultiArr = [1];
 		this.gameMultiIndex = 0;
+
 		this.buttonStart = buttonStart;
 		this.buttonFinish = buttonFinish;
 		this.countOfPlayersField = countOfPlayersField;
@@ -52,10 +52,13 @@ tikTakBoom = {
 		this.game8 = game8;
 		this.gameMillion = gameMillion;
 		this.gameSetting = gameSetting;
+
 		this.needRightAnswers = 19;
 		this.maxWrongAnswers = 2;
 		this.playersWrongAnswer = 0;
 		this.playerNumber = 1;
+
+		this.num = 1;
 		this.penalti = false;
 
 		try {
@@ -67,16 +70,36 @@ tikTakBoom = {
 			this.showDom();
 			alert("Игру невозможно продолжить, игра содержит ошибки!");
 			console.warn(anyException.message);
-
 		}
 
+	answersResults(taskNumber) {
+		for (j = 0; j < (Object.keys(this.tasks[taskNumber]).length - 1); j++) {
+			debugger;
+			this.answers[j] = eval(`this.tasks[1].answer${j + 1}.result`);
+		}
 	},
 
 
+	/*answersResultTrue() {
+		debugger;
+		this.answers.forEach(function (el) {
+			debugger;
+			if (el === true) {
+				return indexOf(el)
+			}
+		}
+		);
+		debugger;
+	},*/
+
+
 	showDom() {
-		// debugger;
+// 		debugger;
+		//this.answersResults(1);
+		//this.answersResultTrue();
 		this.buttonStart.classList.add('game-card__close');
-		this.gameSetting.classList.add('game-card__close');
+		this.cardPlayers.classList.add('game-card__close');
+		this.cardTimer.classList.add('game-card__close');
 		this.buttonFinish.classList.remove('game-card__close');
 		this.timerField.classList.remove('game-card__close');
 		this.gameStatusField.classList.remove('game-card__close');
@@ -105,8 +128,8 @@ tikTakBoom = {
 			console.log(this.gameMultiArr);
 
 			this.createPlayers();
+			console.log(this.players);
 			this.showDom();
-			// this.gameStatusField.innerText = ``;
 			this.gameStatusField.innerText = `Приготовьтесь...`;
 			this.run();
 			this.buttonFinish.addEventListener('click', () => {
@@ -151,6 +174,7 @@ tikTakBoom = {
 		this.buttonStart.innerText = `Начать заново!`;
 		this.buttonFinish.classList.add('game-card__close');
 		this.gameSetting.classList.remove('game-card__close');
+
 	},
 
 	run() {
@@ -163,9 +187,8 @@ tikTakBoom = {
 	},
 
 	turnOn() {
-		// debugger;
 		if (this.stop !== 0) {
-			// debugger;
+			debugger;
 			this.beforeTimer();
 			console.log('после turnOn' + this.state);
 			this.gameStatusField.innerText += ` Вопрос игроку №${this.players[this.state - 1].playerNumber}`;
@@ -177,7 +200,7 @@ tikTakBoom = {
 	},
 
 	turnOff(value) {
-		if (value !== undefined && this.currentTask[value].result) {
+		if (this.currentTask[value].result) {
 			this.gameStatusField.innerText = 'Верно!';
 			this.playersWin = this.players[this.stateLast - 1].playerNumber;
 
@@ -195,9 +218,8 @@ tikTakBoom = {
 				// debugger;
 				clearTimeout(this.timerTimeout);
 			} //
-
 		} else {
-			// debugger;
+			debugger;
 			this.gameStatusField.innerText = 'Неверно!';
 			this.playersLose = this.players[this.stateLast - 1].playerNumber;
 
@@ -209,6 +231,7 @@ tikTakBoom = {
 				this.playersWrongAnswer = this.players[this.stateLast - 1].wrongAnswer;
 				this.playersWrongAnswer += 1;
 				this.players[this.stateLast - 1].wrongAnswer = this.playersWrongAnswer;
+
 			}
 
 			if (this.playersWrongAnswer >= this.maxWrongAnswers) {
@@ -228,6 +251,7 @@ tikTakBoom = {
 			if ((this.tasks.length === 0) || (this.countOfPlayers === 1)) {
 				if (this.countOfPlayers === 1) {
 					(this.penalti) ? (this.result = 'win') : (this.result = 'lose');
+
 					this.finish(this.result);
 				}
 			} else {
@@ -270,6 +294,7 @@ tikTakBoom = {
 		// this.state = (this.state === this.countOfPlayers) ? 1 : this.state + 1;
 
 		console.log('после удаления' + this.state);
+
 	},
 
 	// функция сравнения двух элементов по цвету
@@ -323,7 +348,7 @@ tikTakBoom = {
 					this.gameStatusField.innerText += `${this.TempTextForPenalti}${this.players[i].playerNumber}!`;
 					i = n - 1;
 					// debugger;
-					if (!this.penalti) {
+					if (this.penalti) {
 						// debugger;
 						this.penalTiGame();
 					};
@@ -333,9 +358,10 @@ tikTakBoom = {
 						this.gameStatusField.innerText += `${this.TempTextForPenalti}1-${this.players[n - 1].playerNumber}!`;
 						i = n - 1;
 						// debugger;
-						if (!this.penalti) {
+						if (this.penalti) {
 							// debugger;
 							this.penalTiGame();
+
 						};
 					} else {
 						this.playersForPenalti.push(this.players[i]);
@@ -345,6 +371,7 @@ tikTakBoom = {
 			}
 		}
 	},
+
 
 	penalTiGame() {
 		this.playerWrongAnswerNULL();
@@ -383,6 +410,12 @@ tikTakBoom = {
 			el.time = this.boomTimer
 		);
 	},
+	answersRandom(num) {
+		this.randomAnswerNumber = randomIntNumber(this.answers.length - 1);
+		this.textFieldAnswer`${num}`.innerText = eval(`task.answer${this.randomAnswerNumber + 1}.value`);
+		this.answers.splice(this.randomAnswerNumber, 1);
+	},
+
 
 	printQuestion(task) {
 		console.log(this.gameMultiArr[this.gameMultiIndex]);
@@ -390,44 +423,45 @@ tikTakBoom = {
 			this.textFieldQuestion.innerHTML = `<span class="red">Игра Восьмерка: </span>`;
 		}
 		this.textFieldQuestion.innerHTML += task.question;
+    this.answersResults(this.taskNumber);
 		this.textFieldAnswer1.innerText = task.answer1.value;
 		this.textFieldAnswer2.innerText = task.answer2.value;
-		this.gameQuest.classList.remove('game-card__close');
 
+		this.gameQuest.classList.remove('game-card__close');
 		if (task.answer1 === undefined) {
 			this.textFieldAnswer1.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer1.innerText = task.answer1.value;
+			this.answersRandom(1);
 			this.textFieldAnswer1.classList.remove('game-card__close');
 		};
 		if (task.answer2 === undefined) {
 			this.textFieldAnswer2.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer2.innerText = task.answer2.value;
+			this.answersRandom(2);
 			this.textFieldAnswer2.classList.remove('game-card__close');
 		};
 		if (task.answer3 === undefined) {
 			this.textFieldAnswer3.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer3.innerText = task.answer3.value;
+			this.answersRandom(3);
 			this.textFieldAnswer3.classList.remove('game-card__close');
 		};
 		if (task.answer4 === undefined) {
 			this.textFieldAnswer4.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer4.innerText = task.answer4.value;
+			this.answersRandom(4);
 			this.textFieldAnswer4.classList.remove('game-card__close');
 		};
 		if (task.answer5 === undefined) {
 			this.textFieldAnswer5.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer5.innerText = task.answer5.value;
+			this.answersRandom(5);
 			this.textFieldAnswer5.classList.remove('game-card__close');
 		};
 		if (task.answer6 === undefined) {
 			this.textFieldAnswer6.classList.add('game-card__close');
 		} else {
-			this.textFieldAnswer6.innerText = task.answer6.value;
+			this.answersRandom(6);
 			this.textFieldAnswer6.classList.remove('game-card__close');
 		};
 		this.textFieldAnswer1.addEventListener('click', (event) => {
@@ -463,30 +497,30 @@ tikTakBoom = {
 		this.gameQuest.classList.add('game-card__close');
 		this.buttonStart.innerText = `Начать заново!`;
 		this.buttonFinish.classList.add('game-card__close');
-		this.gameSetting.classList.remove('game-card__close');
+
+
 		if (result === 'lose') {
-			// this.gameStatusField.innerText = `Все проиграли`;
-			this.stopGame();
+			this.gameStatusField.innerText = `Вы проиграли!`;
+
 		}
-		if (result === 'win') {
-			// debugger;
+		if (result === 'won') {
+			debugger;
 			if (this.penalti) {
-				// debugger;
+				debugger;
 				(this.stop === 1) ? (this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 1].playerNumber} выиграл!`) :
-				(this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 2].playerNumber} выиграл!`);
+					(this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 2].playerNumber} выиграл!`);
 			} else {
-				if (this.resultPlayer = 'win') {
+				if (this.resultPlayer = 'won') {
 					this.gameStatusField.innerText += ` вы выиграли!`;
 				} else {
-					this.gameStatusField.innerText = `Выиграл игрок №${this.playersWin}`;
+					this.gameStatusField.innerText = `Вы выиграли!`;
 				}
 			}
-			this.stop = 0;
 		}
 	},
 
 	beforeTimer() {
-		// debugger;
+		debugger;
 		this.gameQuest.classList.add('game-card__close');
 		var i = this.preTime;
 		this.timeClear = setInterval(() => {
@@ -495,9 +529,9 @@ tikTakBoom = {
 			if (i < 0) {
 				clearInterval(this.timeClear);
 				this.timer();
-				const taskNumber = randomIntNumber(this.tasks.length - 1);
-				this.printQuestion(this.tasks[taskNumber]);
-				this.tasks.splice(taskNumber, 1);
+				this.taskNumber = randomIntNumber(this.tasks.length - 1);
+				this.printQuestion(this.tasks[this.taskNumber]);
+				this.tasks.splice(this.taskNumber, 1);
 				this.gameQuest.classList.remove('game-card__close');
 			}
 		}, 1000);
@@ -515,8 +549,8 @@ tikTakBoom = {
 		this.timerField.innerText = `${min}:${sec}`;
 		if (this.boomTimer > 0) {
 			this.timerTimeout = setTimeout(() => {
-					this.timer();
-				},
+				this.timer();
+			},
 				1000,
 			);
 		} else {
