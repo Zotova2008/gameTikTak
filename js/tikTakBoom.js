@@ -64,10 +64,12 @@ tikTakBoom = {
 			this.questionOk();
 			this.AnsANDquesOK();
 			this.kolQues();
-		} catch (anyException) {
+		  } catch(anyException) {
+			this.showDom();
+			alert("Игру невозможно продолжить, игра содержит ошибки!");
 			console.warn(anyException.message);
-			alert("Есть ошибки!");
-		}
+			
+		  }
 
 	},
 

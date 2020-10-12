@@ -22,12 +22,6 @@ window.onload = function () {
 		document.querySelector('#gameMillion'),
 		document.querySelector('.game__setting')
 	)
-	try {
-		tasks;
-	} catch (anyException) {
-		console.warn(anyException.message);
-		alert("Есть ошибки в списке вопросов!");
-	};
 
 	tikTakBoom.startGame();
 
