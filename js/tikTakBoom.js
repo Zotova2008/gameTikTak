@@ -218,7 +218,7 @@ tikTakBoom = {
 	},
 
 	turnOff(value) {
-		if (this.currentTask[value].result) {
+		if (this.answers[value].result) {
 			this.gameStatusField.innerText = 'Верно!';
 			this.playersWin = this.players[this.stateLast - 1].playerNumber;
 
@@ -498,27 +498,27 @@ tikTakBoom = {
 		};
 		this.textFieldAnswer1.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer1');
+			this.turnOff(0);
 		});
 		this.textFieldAnswer2.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer2');
+			this.turnOff(1);
 		});
 		this.textFieldAnswer3.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer3');
+			this.turnOff(2);
 		});
 		this.textFieldAnswer4.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer4');
+			this.turnOff(3);
 		});
 		this.textFieldAnswer5.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer5');
+			this.turnOff(4);
 		});
 		this.textFieldAnswer6.addEventListener('click', (event) => {
 			event.stopImmediatePropagation();
-			this.turnOff('answer6');
+			this.turnOff(5);
 		});
 
 		this.currentTask = task;
