@@ -158,14 +158,6 @@ h1 {
   min-width: 177px;
 }
 
-.one {
-  display: none;
-}
-
-#gameMillion:checked ~ .one {
-  display: block;
-}
-
 .red {
   font-weight: bold;
   color: red;
