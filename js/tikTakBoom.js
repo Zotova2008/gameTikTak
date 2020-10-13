@@ -64,6 +64,7 @@ tikTakBoom = {
 			this.questionOk();
 			this.AnsANDquesOK();
 			this.kolQues();
+			this.trueOK();
 		  } catch(anyException) {
 			this.showDom();
 			alert("Игру невозможно продолжить, игра содержит ошибки!");
@@ -424,6 +425,18 @@ tikTakBoom = {
 
 	kolQues() {
 		if (this.tasks.length < 30) throw new Error(`В игре мало вопросов!`);
+	},
+
+	trueOK() {
+		for (let i = 0; i < this.tasks.length; i++) {
+			var res = "not";
+			for (let j = 1; j <= 10; j++) {
+				if (eval(`this.tasks[i].answer${j}`)) {
+					if (eval(`this.tasks[i].answer${j}.result`) === true) {res = "OK"}
+				}
+			}
+			if (res === "not") throw new Error(`В вопросе ${i+1} отсутствует верный ответ!`);
+		}
 	}
 
 }
