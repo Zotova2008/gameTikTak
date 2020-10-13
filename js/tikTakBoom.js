@@ -239,7 +239,6 @@ tikTakBoom = {
 	},
 
 	checkRightAns() {
-		console.log(this.rightAnswers);
 		if (this.rightAnswers < this.needRightAnswers) {
 			if ((this.tasks.length === 0) || (this.countOfPlayers === 1)) {
 				if (this.countOfPlayers === 1) {
@@ -253,8 +252,6 @@ tikTakBoom = {
 
 			if (!this.penalti) {
 				this.bubbleSort(this.players, this.comparationWrongAnswer);
-				console.log('пинальти');
-				console.log(this.players);
 				this.winOrPenalti();
 			} else {
 				this.result = 'win';
@@ -356,7 +353,7 @@ tikTakBoom = {
 		this.state = 0;
 		this.playersWrongAnswer = 0;
 		this.maxWrongAnswers = 0;
-		this.needRightAnswers = 19;
+		this.needRightAnswers = 3;
 		this.countOfPlayers = this.players.length;
 		clearInterval(this.timeClear);
 		clearTimeout(this.timerTimeout);
