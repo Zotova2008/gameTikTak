@@ -162,3 +162,15 @@ h1 {
   font-weight: bold;
   color: red;
 }
+
+.rulles h1,
+.rulles h2 {
+  width: auto;
+
+  text-align: center;
+}
+
+.rulles {
+  max-width: 80%;
+  margin: auto;
+}

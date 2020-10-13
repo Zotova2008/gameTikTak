@@ -56,8 +56,8 @@ tikTakBoom = {
 		this.gameMillion = gameMillion;
 		this.gameSetting = gameSetting;
 
-		this.needRightAnswers = 3;
-		this.maxWrongAnswers = 1;
+		this.needRightAnswers = 19;
+		this.maxWrongAnswers = 3;
 		this.playersWrongAnswer = 0;
 		this.playerNumber = 1;
 
@@ -70,7 +70,7 @@ tikTakBoom = {
 			this.AnsANDquesOK();
 			this.kolQues();
 			this.trueOK();
-		  } catch(anyException) {
+		} catch (anyException) {
 			this.showDom();
 			alert("Игру невозможно продолжить, игра содержит ошибки!");
 			console.warn(anyException.message);
@@ -356,7 +356,7 @@ tikTakBoom = {
 		this.state = 0;
 		this.playersWrongAnswer = 0;
 		this.maxWrongAnswers = 0;
-		this.needRightAnswers = 5;
+		this.needRightAnswers = 19;
 		this.countOfPlayers = this.players.length;
 		clearInterval(this.timeClear);
 		clearTimeout(this.timerTimeout);
@@ -574,7 +574,9 @@ tikTakBoom = {
 			var res = "not";
 			for (let j = 1; j <= 10; j++) {
 				if (eval(`this.tasks[i].answer${j}`)) {
-					if (eval(`this.tasks[i].answer${j}.result`) === true) {res = "OK"}
+					if (eval(`this.tasks[i].answer${j}.result`) === true) {
+						res = "OK"
+					}
 				}
 			}
 			if (res === "not") throw new Error(`В вопросе ${i+1} отсутствует верный ответ!`);
