@@ -26,7 +26,7 @@ tikTakBoom = {
 
 
 		this.preTime = 3;
-		this.boomTimer = 30
+		this.boomTimer = 30;
 		this.stop = 1;
 		this.tasks = JSON.parse(tasks);
 		this.answers = [];
@@ -99,6 +99,7 @@ tikTakBoom = {
 
 		this.buttonStart.addEventListener('click', (event) => {
 			this.countOfPlayers = parseInt(this.countOfPlayersField.value) || 2;
+			this.totalCountofPlayers = this.countOfPlayers;
 			this.boomTimer = (parseInt(this.countOfTimeField.value) + 1) || 31;
 
 			this.stop = 1;
@@ -198,6 +199,7 @@ tikTakBoom = {
 	},
 
 	turnOff(value) {
+		debugger;
 		// if (value !== undefined && this.currentTask[value].result)
 		if (value !== undefined && this.answers[value].result) {
 			this.gameStatusField.innerText = 'Верно!';
@@ -210,18 +212,22 @@ tikTakBoom = {
 				clearInterval(this.timeClear);
 				clearTimeout(this.timerTimeout);
 			} else {
+				debugger;
 				this.rightAnswers += 1;
 				(this.penalti) ? (this.players[this.stateLast - 1].time = 5) :
-				(this.players[this.stateLast - 1].time += 5);
+					(this.players[this.stateLast - 1].time += 5);
 				clearTimeout(this.timerTimeout);
 			}
 		} else {
+			debugger;
 			this.gameStatusField.innerText = 'Неверно!';
 			this.playersLose = this.players[this.stateLast - 1].playerNumber;
 
 			if (this.gameMultiArr[this.gameMultiIndex] === 3) {
+				debugger;
 				this.stopGame();
 			} else {
+				debugger;
 				this.players[this.stateLast - 1].time -= 5;
 				clearTimeout(this.timerTimeout);
 				this.playersWrongAnswer = this.players[this.stateLast - 1].wrongAnswer;
@@ -230,6 +236,7 @@ tikTakBoom = {
 			}
 
 			if (this.playersWrongAnswer >= this.maxWrongAnswers) {
+				debugger;
 				this.deleteLosePlayers();
 			}
 		}
@@ -239,21 +246,31 @@ tikTakBoom = {
 	},
 
 	checkRightAns() {
+		debugger;
 		if (this.rightAnswers < this.needRightAnswers) {
+			debugger;
 			if ((this.tasks.length === 0) || (this.countOfPlayers === 1)) {
-				if (this.countOfPlayers === 1) {
-					(this.penalti) ? (this.result = 'win') : (this.result = 'lose');
+				debugger;
+				if ((this.countOfPlayers === 1) && (this.totalCountofPlayers != 1)) {
+					debugger;
+					this.penalti ? (this.result = 'win') : (this.result = 'lose');
 					this.finish(this.result);
+				} else {
+					debugger;
+					this.turnOn();
 				}
 			} else {
+				debugger;
 				this.turnOn();
 			}
 		} else {
-
+			debugger;
 			if (!this.penalti) {
+				debugger;
 				this.bubbleSort(this.players, this.comparationWrongAnswer);
 				this.winOrPenalti();
 			} else {
+				debugger;
 				this.result = 'win';
 				this.finish(this.result);
 			}
@@ -261,12 +278,13 @@ tikTakBoom = {
 	},
 
 	deleteLosePlayers() {
+		debugger;
+		if (this.totalCountofPlayers != 1) {
+			this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 1].playerNumber} выбывает из игры!`;
 
-		this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 1].playerNumber} выбывает из игры!`;
-
-		this.players.splice(this.stateLast - 1, 1);
-		this.countOfPlayers -= 1;
-
+			this.players.splice(this.stateLast - 1, 1);
+			this.countOfPlayers -= 1;
+		};
 		if (this.countOfPlayers === 1) {
 			if (this.penalti) {
 				this.result = 'win';
@@ -516,8 +534,8 @@ tikTakBoom = {
 		this.timerField.innerText = `${min}:${sec}`;
 		if (this.boomTimer > 0) {
 			this.timerTimeout = setTimeout(() => {
-					this.timer();
-				},
+				this.timer();
+			},
 				1000,
 			);
 		} else {
@@ -544,7 +562,7 @@ tikTakBoom = {
 
 	questionOk() {
 		for (let i = 0; i < this.tasks.length; i++) {
-			if ('question' in this.tasks[i]) {} else throw new Error(`В вопросе ${i + 1} отсутствует вопрос!`);
+			if ('question' in this.tasks[i]) { } else throw new Error(`В вопросе ${i + 1} отсутствует вопрос!`);
 		}
 	},
 
@@ -576,7 +594,7 @@ tikTakBoom = {
 					}
 				}
 			}
-			if (res === "not") throw new Error(`В вопросе ${i+1} отсутствует верный ответ!`);
+			if (res === "not") throw new Error(`В вопросе ${i + 1} отсутствует верный ответ!`);
 		}
 	}
 
