@@ -39,9 +39,9 @@ const tasks = `
 	  {
 		"question": "Как правильно написать начало for цикла?",
 		"answer1": { "result": false, "value": "for (i = 0; i <= 5)" },
-		"answer2": { "result": false, "value": "for (i = 0; i <= 5; i++)" },
+		"answer2": { "result": true, "value": "for (i = 0; i <= 5; i++)" },
 		"answer3": { "result": false, "value": "for i = 1 to 5" },
-		"answer4": { "result": true, "value": "for (i <= 5; i++)" }
+		"answer4": { "result": false, "value": "for (i <= 5; i++)" }
   },
   {
 	"question": "Как заблокировать поведение браузера по умолчанию на событии? Например, заблокировать перенаправление со ссылки.",
