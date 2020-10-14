@@ -199,7 +199,6 @@ tikTakBoom = {
 	},
 
 	turnOff(value) {
-		debugger;
 		// if (value !== undefined && this.currentTask[value].result)
 		if (value !== undefined && this.answers[value].result) {
 			this.gameStatusField.innerText = 'Верно!';
@@ -212,22 +211,18 @@ tikTakBoom = {
 				clearInterval(this.timeClear);
 				clearTimeout(this.timerTimeout);
 			} else {
-				debugger;
 				this.rightAnswers += 1;
 				(this.penalti) ? (this.players[this.stateLast - 1].time = 5) :
 					(this.players[this.stateLast - 1].time += 5);
 				clearTimeout(this.timerTimeout);
 			}
 		} else {
-			debugger;
 			this.gameStatusField.innerText = 'Неверно!';
 			this.playersLose = this.players[this.stateLast - 1].playerNumber;
 
 			if (this.gameMultiArr[this.gameMultiIndex] === 3) {
-				debugger;
 				this.stopGame();
 			} else {
-				debugger;
 				this.players[this.stateLast - 1].time -= 5;
 				clearTimeout(this.timerTimeout);
 				this.playersWrongAnswer = this.players[this.stateLast - 1].wrongAnswer;
@@ -236,7 +231,6 @@ tikTakBoom = {
 			}
 
 			if (this.playersWrongAnswer >= this.maxWrongAnswers) {
-				debugger;
 				this.deleteLosePlayers();
 			}
 		}
@@ -246,31 +240,22 @@ tikTakBoom = {
 	},
 
 	checkRightAns() {
-		debugger;
 		if (this.rightAnswers < this.needRightAnswers) {
-			debugger;
 			if ((this.tasks.length === 0) || (this.countOfPlayers === 1)) {
-				debugger;
 				if ((this.countOfPlayers === 1) && (this.totalCountofPlayers != 1)) {
-					debugger;
 					this.penalti ? (this.result = 'win') : (this.result = 'lose');
 					this.finish(this.result);
 				} else {
-					debugger;
 					this.turnOn();
 				}
 			} else {
-				debugger;
 				this.turnOn();
 			}
 		} else {
-			debugger;
 			if (!this.penalti) {
-				debugger;
 				this.bubbleSort(this.players, this.comparationWrongAnswer);
 				this.winOrPenalti();
 			} else {
-				debugger;
 				this.result = 'win';
 				this.finish(this.result);
 			}
@@ -278,7 +263,6 @@ tikTakBoom = {
 	},
 
 	deleteLosePlayers() {
-		debugger;
 		if (this.totalCountofPlayers != 1) {
 			this.gameStatusField.innerText += ` Игрок №${this.players[this.stateLast - 1].playerNumber} выбывает из игры!`;
 
