@@ -69,6 +69,7 @@ tikTakBoom = {
 			this.questionOk();
 			this.AnsANDquesOK();
 			this.kolQues();
+			console.log(JSON.parse(tasks));
 		} catch (anyException) {
 			this.showDom();
 			alert("Игру невозможно продолжить, игра содержит ошибки!");
