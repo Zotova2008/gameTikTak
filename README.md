@@ -1,4 +1,4 @@
-Данную творческую работу выполняли: <a href="https://github.com/Zotova2008">Наталья Зотова</a>, <a href="https://github.com/AlexSky23">Александр Скирденко (Alex Sky)</a>, <a href="https://github.com/IlyaPupkin83">Илья Скоторенко</a>
+Данную творческую работу выполняли: <a href="https://github.com/Zotova2008">Наталья Зотова (руководитель команды)</a>, <a href="https://github.com/AlexSky23">Александр Скирденко (Alex Sky)</a>, <a href="https://github.com/IlyaPupkin83">Илья Скоторенко</a>
 
 ## Тик-так-бум
 
